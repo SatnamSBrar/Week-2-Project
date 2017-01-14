@@ -10,19 +10,113 @@ namespace Week_2_Project
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter your first name:\n");   //ask user for first name
+            //tells user that he or she can quit or restart at any time
+            Console.WriteLine("You may exit the program at any time by entering \"quit\".\n");
+            Console.WriteLine("You may restart the program at any time by entering \"restart\".\n");
+
+            //ask user for first name
+            Console.WriteLine("Please enter your first name:\n");   
             string firstName = Console.ReadLine();
 
-            Console.WriteLine("\nPlease enter your last name: \n"); //ask user for last name
+            //quit/restart method. see mthod below
+            End(firstName);
+
+            //ask user for last name
+            Console.WriteLine("\nPlease enter your last name: \n"); 
             string lastName = Console.ReadLine();
 
-            Greeting(firstName, lastName);                          //call method to greet user
+            //quit/restart method. see method below
+            End(lastName);
 
-            Console.WriteLine("How old are you?\n");                //ask user for age
-            int age = int.Parse(Console.ReadLine());                //converts string to integer type
+            //call method to greet user. see method below
+            Greeting(firstName, lastName);                          
 
-            AgeError(age);
-            
+            //converts user input to lowercase and then capitalizes first letter
+            firstName = firstName.ToLower();
+            string firstName1 = firstName.Substring(0, 1);
+            firstName1 = firstName1.ToUpper();
+            firstName = firstName.Remove(0, 1);
+
+            //converts user input to lowercase and then capitalizes first letter
+            lastName = lastName.ToLower();
+            string lastName1 = lastName.Substring(0, 1);
+            lastName1 = lastName1.ToUpper();
+            lastName = lastName.Remove(0, 1);
+
+            //ask user for age and converts string to integer type
+            Console.WriteLine("How old are you?\n");
+            string ageInput = Console.ReadLine();
+
+            //quit/restart method
+            End(ageInput);
+
+            //converts ageInput to integer
+            int age = int.Parse(ageInput);
+
+            //confirms age is between 0 and 130. see method below
+            age = AgeError(age);
+
+            //stores numbers of years until retirement. see method below                                 
+            int retire = Retirement(age);                           
+
+            //ask user what month he or she was born in
+            Console.WriteLine("\nPlease enter your month of birth: (i.e. 1 for January, 12 for December):\n");
+            string monthInput = Console.ReadLine();
+
+            //quit/restart method
+            End(monthInput);
+
+            //convert monthInput to integer
+            int birthMonth = int.Parse(monthInput);
+
+            //stores bank account balance as double. see method below
+            double money = BankAccount(birthMonth);
+
+            //asks user for his or her favorite ROYGBIV color
+            //allows user to input "help" in case he or she is not familiar with ROYGBIV
+            Console.WriteLine("\nPlease enter your favorite ROYGBIV color:\n\nFor help, enter \"help\"\n");
+            string color = Console.ReadLine();
+
+            //quit/restart method
+            End(color);
+
+            //print out ROYGIBIV info if user asks for help. see method below
+            string colorNew = ColorHelp(color);
+
+            //picks mode of transportation based on favorite color
+            string whip = Vehicle(colorNew);
+
+            //asks user to enter number of siblings
+            Console.WriteLine("\nPlease enter number of siblings:\n");
+            string siblingInput = Console.ReadLine();
+
+            //quit/restart method
+            End(siblingInput);
+
+            //converts siblingInput to integer
+            int numSibling = int.Parse(siblingInput);
+
+            //stores vacation home based on number of siblings. see method below
+            string vacaHome = Vacation(numSibling);
+
+            //write fortune based on user input
+            Console.WriteLine("\nBased on the answers, the crystal ball shows...\n...\n...\n...\n\n" + firstName1 + firstName + " " + lastName1 + lastName + " will retire in " + retire + " years with $" + money + ".00 in the bank, a vacation home in " + vacaHome + ", and a " + whip + ".\n");
+
+            //final remark
+            Conclusion();
+        }
+        static void End (string end)
+        {
+            if (end.Equals("quit", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Console.WriteLine("\nNo one likes a quitter...\n");
+                Environment.Exit(0);
+            }
+            else if (end.Equals("restart", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                System.Diagnostics.Process.Start(fileName);
+            }
         }
         static void Greeting (string firstName, string lastName)
         {
@@ -38,36 +132,151 @@ namespace Week_2_Project
             lastName1 = lastName1.ToUpper();
             lastName = lastName.Remove(0, 1);
 
+            //greeting
             Console.WriteLine("\n...\n...\n...\n\nHello, " + firstName1 + firstName + " " + lastName1 + lastName + ". Your fortune awaits.\n\nMUAHAHAHAHA\n");
         }
         static int Retirement (int age)
         {
             int retire;
+            int yearsUntilRetire;
             if (age % 2 == 0)
             {
-                retire = 65;                                //returns retirement age of 65 if age is even
+                retire = 65;    //returns retirement age of 65 if age is even
             }
             else
             {
-                retire = 75;                                //returns retirement age of 75 if age is odd
+                retire = 75;    //returns retirement age of 75 if age is odd
             }
-            return retire;
+
+            yearsUntilRetire = retire - age;
+            return yearsUntilRetire;
         }
         static int AgeError (int age)
         {
-            while (age <= 0)                                 //prevents user from entering age below 1
+            while (age <= 0)    //prevents user from entering age below 1
             {
                 Console.WriteLine("\nImpossible. Please enter your actual age:\n");
                 int age1 = int.Parse(Console.ReadLine());
                 age = age1;
             }
-            while (age > 120)                               //prevents user from entering age greater than 100 
+            while (age > 120)   //prevents user from entering age greater than 100 
             {
                 Console.WriteLine("\nI don't believe you. Please enter your actual age:\n");
                 int age1 = int.Parse(Console.ReadLine());
                 age = age1;
             }
             return age;
+        }
+        static double BankAccount (int birthMonth)
+        {
+            double money;
+
+            //sets conditions for meny left in bank based on birthMonth
+            if (birthMonth >= 1 && birthMonth <= 4)
+            {
+                money = 500000;
+            }
+            else if (birthMonth > 4 && birthMonth <= 8)
+            {
+                money = 900000;
+            }
+            else if (birthMonth > 8 && birthMonth <= 12)
+            {
+                money = 50000;
+            }
+            else
+            {
+                money = 0;
+            }
+
+            return money;
+        }
+        static string ColorHelp (string color)
+        {
+            //displays ROYGBIV colors if user inputs help
+            while (color.Equals("help", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Console.WriteLine("\nROYGBIV Colors\nR = Red\nO = Orange\nY = Yellow\nG = Green\nB = Blue\nI = Indigo\nV = Violet\n");
+                Console.WriteLine("\nPlease enter your favorite ROYGBIV color:\n");
+                string color1 = Console.ReadLine();
+                if (color1.Equals("quit", StringComparison.CurrentCultureIgnoreCase))    //option to quit/restart
+                {
+                    Console.WriteLine("\nNo one likes a quitter...\n");
+                    Environment.Exit(0);
+                }
+                color = color1;
+            }
+            string colorNew = color;
+            return colorNew;
+        }
+        static string Vehicle (string color)
+        {
+            //assigns vehicle based on favorite color
+            string colorLower = color.ToLower();
+            string whip;
+            switch (color)
+            {
+                case "red":
+                    whip = "Lambo";
+                    break;
+                case "orange":
+                    whip = "Toyota Camry";
+                    break;
+                case "yellow":
+                    whip = "Bentley";
+                    break;
+                case "green":
+                    whip = "Subaru";
+                    break;
+                case "blue":
+                    whip = "Ducati";
+                    break;
+                case "indigo":
+                    whip = "Tesla";
+                    break;
+                case "violet":
+                    whip = "Volkswagen";
+                    break;
+                default:
+                    whip = "squeaky shopping cart";
+                    break;
+            }
+            return whip;
+        }
+        static string Vacation (int numSibling)
+        {
+            string vacaHome;
+
+            //assigns vacation home based on number of siblings
+            if (numSibling == 0)
+            {
+                vacaHome = "Paris";
+            }
+            else if (numSibling == 1)
+            {
+                vacaHome = "Barcelona";
+            }
+            else if (numSibling == 2)
+            {
+                vacaHome = "Venice";
+            }
+            else if (numSibling == 3)
+            {
+                vacaHome = "Madrid";
+            }
+            else if (numSibling > 3)
+            {
+                vacaHome = "Miami";
+            }
+            else
+            {
+                vacaHome = "Antarctica";
+            }
+            return vacaHome;
+        }
+        static void Conclusion ()
+        {
+            Console.WriteLine("\nI hope you are satisfied with your fortune. Please come back again!\n");
         }
     }
 }
