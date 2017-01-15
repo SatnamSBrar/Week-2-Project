@@ -114,7 +114,7 @@ namespace Week_2_Project
             }
             else if (end.Equals("restart", StringComparison.CurrentCultureIgnoreCase))
             {
-                var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;      //this method closes current console and opens new console window
                 System.Diagnostics.Process.Start(fileName);
             }
         }
@@ -192,7 +192,7 @@ namespace Week_2_Project
             return money;
         }
         static string ColorHelp (string color)
-        {
+        {            
             //displays ROYGBIV colors if user inputs help
             while (color.Equals("help", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -203,6 +203,11 @@ namespace Week_2_Project
                 {
                     Console.WriteLine("\nNo one likes a quitter...\n");
                     Environment.Exit(0);
+                }
+                else if (color1.Equals("restart", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;      //this method closes current console and opens new console window
+                    System.Diagnostics.Process.Start(fileName);
                 }
                 color = color1;
             }
