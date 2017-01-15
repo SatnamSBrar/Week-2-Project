@@ -114,8 +114,10 @@ namespace Week_2_Project
             }
             else if (end.Equals("restart", StringComparison.CurrentCultureIgnoreCase))
             {
-                var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;      //this method closes current console and opens new console window
-                System.Diagnostics.Process.Start(fileName);
+                string[] args = { };    //creates arbitrary string array to be used to restart Main method
+                Console.Clear();        //clears previous console
+                Main(args);             //starts Main method
+                Environment.Exit(0);    //clears previous information
             }
         }
         static void Greeting (string firstName, string lastName)
@@ -206,8 +208,10 @@ namespace Week_2_Project
                 }
                 else if (color1.Equals("restart", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;      //this method closes current console and opens new console window
-                    System.Diagnostics.Process.Start(fileName);
+                    string[] args = { };    //creates arbitrary string array to be used to restart Main method
+                    Console.Clear();        //clears previous console
+                    Main(args);             //starts Main method
+                    Environment.Exit(0);    //clears previous information
                 }
                 color = color1;
             }
