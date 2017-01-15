@@ -100,7 +100,7 @@ namespace Week_2_Project
             string vacaHome = Vacation(numSibling);
 
             //write fortune based on user input
-            Console.WriteLine("\nBased on the answers, the crystal ball shows...\n...\n...\n...\n\n" + firstName1 + firstName + " " + lastName1 + lastName + " will retire in " + retire + " years with $" + money + ".00 in the bank, a vacation home in " + vacaHome + ", and a " + whip + ".\n");
+            Console.WriteLine("\nBased on the answers, the crystal ball shows...\n...\n...\n...\n\n" + firstName1 + firstName + " " + lastName1 + lastName + ", you will retire in " + retire + " years with $" + money + ".00 in the bank, a vacation home in " + vacaHome + ", and a " + whip + ".");
 
             //final remark
             Conclusion();
@@ -135,7 +135,25 @@ namespace Week_2_Project
             lastName = lastName.Remove(0, 1);
 
             //greeting
-            Console.WriteLine("\n...\n...\n...\n\nHello, " + firstName1 + firstName + " " + lastName1 + lastName + ". Your fortune awaits.\n\nMUAHAHAHAHA\n");
+            Console.WriteLine("\n...\n...\n...\n");
+            Console.WriteLine("      _");
+            Console.WriteLine("     ( )");
+            Console.WriteLine("      H");
+            Console.WriteLine("      H");
+            Console.WriteLine("     _H_");
+            Console.WriteLine("  .-'-.-'-.");
+            Console.WriteLine(" /         \\");
+            Console.WriteLine("|           |");
+            Console.WriteLine("|   .-------'._");
+            Console.WriteLine("|  / /  '.' '. \\");
+            Console.WriteLine("|  \\ \\ @   @ / /");
+            Console.WriteLine("|   '---------'");
+            Console.WriteLine("|    _______|");
+            Console.WriteLine("|  .'-+-+-+|\tMUAHAHAHAHAHAHA. Hello, " + firstName1 + firstName + " " + lastName1 + lastName + ". Your fortune awaits.");
+            Console.WriteLine("|  '.-+-+-+|");
+            Console.WriteLine("|    \"\"\"\"\"\" |");
+            Console.WriteLine("'-.__   __.-'");
+            Console.WriteLine("     \"\"\"\n");
         }
         static int Retirement (int age)
         {
@@ -285,7 +303,25 @@ namespace Week_2_Project
         }
         static void Conclusion ()
         {
-            Console.WriteLine("\nI hope you are satisfied with your fortune. Please come back again!\n");
+
+            Console.WriteLine("      _");
+            Console.WriteLine("     ( )");
+            Console.WriteLine("      H");
+            Console.WriteLine("      H");
+            Console.WriteLine("     _H_");
+            Console.WriteLine("  .-'-.-'-.");
+            Console.WriteLine(" /         \\");
+            Console.WriteLine("|           |");
+            Console.WriteLine("|   .-------'._");
+            Console.WriteLine("|  / /  '.' '. \\");
+            Console.WriteLine("|  \\ \\ @   @ / /");
+            Console.WriteLine("|   '---------'");
+            Console.WriteLine("|    _______|");
+            Console.WriteLine("|  .'-+-+-+|\tI hope you are satisfied with your fortune, that'll be $100,000.");
+            Console.WriteLine("|  '.-+-+-+|\tPlease come back again!");
+            Console.WriteLine("|    \"\"\"\"\"\" |");
+            Console.WriteLine("'-.__   __.-'");
+            Console.WriteLine("     \"\"\"\n");
         }
     }
 }
