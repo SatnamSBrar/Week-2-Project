@@ -317,8 +317,8 @@ namespace Week_2_Project
             Console.WriteLine("|  \\ \\ @   @ / /");
             Console.WriteLine("|   '---------'");
             Console.WriteLine("|    _______|");
-            Console.WriteLine("|  .'-+-+-+|\tI hope you are satisfied with your fortune, that'll be $100,000.");
-            Console.WriteLine("|  '.-+-+-+|\tPlease come back again!");
+            Console.WriteLine("|  .'-+-+-+|\tWhat a great fortune! That'll be $100,000.");
+            Console.WriteLine("|  '.-+-+-+|");
             Console.WriteLine("|    \"\"\"\"\"\" |");
             Console.WriteLine("'-.__   __.-'");
             Console.WriteLine("     \"\"\"\n");
